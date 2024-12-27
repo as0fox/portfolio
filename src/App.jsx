@@ -1,42 +1,25 @@
-import { useState } from 'react';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
+import React from 'react';
+import Navbar from './components/Navbar';
+import Header from './components/Header';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Contact from './components/Contact';
-import './index.css'
-import './App.css'
-function App() {
-  const [activeSection, setActiveSection] = useState('home');
+import Footer from './components/Footer';
+import './styles/index.css';
 
+const App = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
-      
-      <main className="container mx-auto px-4 py-8">
-        <section id="home" className="min-h-screen flex items-center">
-          <Hero />
-        </section>
-
-        <section id="about" className="min-h-screen py-20">
-          <About />
-        </section>
-
-        <section id="skills" className="min-h-screen py-20">
-          <Skills />
-        </section>
-
-        <section id="projects" className="min-h-screen py-20">
-          <Projects />
-        </section>
-
-        <section id="contact" className="min-h-screen py-20">
-          <Contact />
-        </section>
-      </main>
+    <div className="container">
+      <div className="page">
+        <Navbar />
+        <Header />
+        <About />
+        <Skills />
+        <Projects />
+        <Footer />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

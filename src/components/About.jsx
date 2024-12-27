@@ -1,52 +1,57 @@
-function About() {
-  const achievements = [
+import React from 'react';
+
+const AboutCard = ({ image, title, description, buttonLink, buttonText = "about" }) => {
+  return (
+    <div className="card" style={{ height: '50%' }}>
+      <div className="head">
+        <img src={image} alt="" className="img-head" />
+      </div>
+      <div className="body">
+        <h1 className="bold">{title}</h1>
+        <pre>{description}</pre>
+        <button className="btn">
+          <a href={buttonLink} className="a">{buttonText}</a>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const About = () => {
+  const aboutCards = [
     {
-      icon: "🎓",
-      title: "TTU Graduate",
-      description: "Bachelor's degree in Smart Device Computing"
+      image: "/images/icons8-university-64.png",
+      title: "TTU",
+      description: "studied at \nTafila Technical University.",
+      buttonLink: "https://www.ttu.edu.jo"
     },
     {
-      icon: "🏆",
-      title: "Top Performer",
-      description: "Ranked second in class with distinction"
+      image: "/images/icons8-2-64.png",
+      title: "Ranking",
+      description: "ranking second in my class \nwith achieving very good",
+      buttonLink: "#"
     },
     {
-      icon: "💡",
-      title: "Innovation",
-      description: "Led multiple successful tech projects"
+      image: "/images/icons8-graduated-100.png",
+      title: "Graduated",
+      description: "with a Bachelor's degree\nand graduated in 6/2024.",
+      buttonLink: "#"
     },
     {
-      icon: "🚀",
-      title: "Full Stack",
-      description: "Specialized in modern web technologies"
+      image: "/images/icons8-android-100.png",
+      title: "CSD",
+      description: "I studied \nsmart device computing.",
+      buttonLink: "https://www.ttu.edu.jo/en/college-of-information-technology-and-communication/department-of-information-technology/"
     }
   ];
 
   return (
-    <div className="space-y-12">
-      <div className="text-center space-y-4">
-        <h2 className="text-4xl font-bold">About Me<span className="text-yellow-400">.</span></h2>
-        <p className="text-white/60 max-w-2xl mx-auto">
-          A passionate developer with a strong foundation in computer science and a keen interest in creating innovative solutions.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {achievements.map((item, index) => (
-          <div
-            key={index}
-            className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-yellow-400/50 transition-colors group"
-          >
-            <div className="text-4xl mb-4">{item.icon}</div>
-            <h3 className="text-xl font-semibold mb-2 group-hover:text-yellow-400 transition-colors">
-              {item.title}
-            </h3>
-            <p className="text-white/60">{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <section className="section" id="about">
+      {aboutCards.map((card, index) => (
+        <AboutCard key={index} {...card} />
+      ))}
+    </section>
   );
-}
+};
 
 export default About;
